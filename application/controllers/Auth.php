@@ -71,7 +71,7 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[5]|matches[password2]', ['matches' => 'password dont match!', 'min_length' => 'password too short!']);
 		$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 		if ($this->form_validation->run() == false) {
-			$data['title'] = 'Absensi Registration';
+			$data['title'] = 'Registration Page';
 			$this->load->view('templates/auth_header');
 			$this->load->view('auth/registration');
 			$this->load->view('templates/auth_footer');

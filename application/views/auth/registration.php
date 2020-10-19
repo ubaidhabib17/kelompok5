@@ -11,20 +11,20 @@
 							<form class="user">
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="text" class="form-control form-control-user" id="exampleFirstName"
+										<input type="text" class="form-control form-control-user" id="nama_depan" name="nama_depan"
 											placeholder="Nama Depan">
 									</div>
 									<div class="col-sm-6">
-										<input type="text" class="form-control form-control-user" id="exampleLastName"
+										<input type="text" class="form-control form-control-user" id="nama_belakang" name="nama_belakang"
 											placeholder="Nama Belakang">
 									</div>
 								</div>
 								<div class="form-group">
-									<input type="email" class="form-control form-control-user" id="exampleInputEmail"
+									<input type="email" class="form-control form-control-user" id="email" name="email"
 										placeholder="Alamat Email">
 								</div>
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user" id="exampleInputEmail"
+									<input type="text" class="form-control form-control-user" id="no_induk" name="no_induk"
 										placeholder="Nomor Induk">
 								</div>
 								<div class="form-group row">
@@ -39,7 +39,7 @@
 								</div>
 								<button type="submit" class="btn btn-primary btn-user btn-block">
 									Register Account
-</button>
+								</button>
 								<hr>
 							</form>
 							<hr>
