@@ -4,7 +4,7 @@
         public function index(){
             $data['user'] = $this->db->get_where('user', ['email' => 
             $this->session->userdata('email')])->row_array();
-            echo "Selamat datang ".$data['user']['name'];
+            echo "Selamat datang ".$data['user']['nama_depan'];
         }
     }
 ?>

@@ -8,29 +8,34 @@
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
 							</div>
-							<form class="user">
+							<form class="user" method="POST" action="<?= base_url('auth/registration')?>">
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="text" class="form-control form-control-user" id="nama_depan" name="nama_depan"
-											placeholder="Nama Depan">
+											placeholder="Nama Depan" value="<?= set_value('nama_depan');?>">
+											<?= form_error('nama_depan', '<small class="text-danger pl-3">', '</small>'); ?>
 									</div>
 									<div class="col-sm-6">
 										<input type="text" class="form-control form-control-user" id="nama_belakang" name="nama_belakang"
-											placeholder="Nama Belakang">
+											placeholder="Nama Belakang" value="<?= set_value('nama_belakang');?>">
+											<?= form_error('nama_belakang', '<small class="text-danger pl-3">', '</small>'); ?>
 									</div>
 								</div>
 								<div class="form-group">
 									<input type="email" class="form-control form-control-user" id="email" name="email"
-										placeholder="Alamat Email">
+										placeholder="Alamat Email" value="<?= set_value('email');?>">
+										<?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
 								</div>
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user" id="no_induk" name="no_induk"
-										placeholder="Nomor Induk">
+										placeholder="Nomor Induk" value="<?= set_value('no_induk');?>">
+										<?= form_error('no_induk', '<small class="text-danger pl-3">', '</small>'); ?>
 								</div>
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="password" class="form-control form-control-user"
 											id="password1" name="password1" placeholder="Password">
+										<?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
 									</div>
 									<div class="col-sm-6">
 										<input type="password" class="form-control form-control-user"
