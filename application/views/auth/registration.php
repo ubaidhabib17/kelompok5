@@ -1,5 +1,4 @@
-	<div class="container">
-
+<div class="container">
 		<div class="card o-hidden border-0 shadow-lg my-5 col-lg-7 mx-auto">
 			<div class="card-body p-0">
 				<!-- Nested Row within Card Body -->
@@ -9,47 +8,46 @@
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
 							</div>
-							<form class="user" method="post" action="<?= base_url('auth/registration'); ?>">
+							<form class="user">
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="text" class="form-control form-control-user" id="FirstName" name="firstname" placeholder="Nama Depan" value="<?= set_value('firstname'); ?>">
-										<?= form_error('firstname', '<small class="text-danger pl-3">', '</small>'); ?>
+										<input type="text" class="form-control form-control-user" id="exampleFirstName"
+											placeholder="Nama Depan">
 									</div>
 									<div class="col-sm-6">
-										<input type="text" class="form-control form-control-user" id="LastName" name="lastname" placeholder="Nama Belakang" value="<?= set_value('lastname'); ?>">>
-										<?= form_error('lastname', '<small class="text-danger pl-3">', '</small>'); ?>
+										<input type="text" class="form-control form-control-user" id="exampleLastName"
+											placeholder="Nama Belakang">
 									</div>
 								</div>
 								<div class="form-group">
-									<input type="email" class="form-control form-control-user" id="Email" name="email" placeholder="Alamat Email" value="<?= set_value('email'); ?>">>
-									<?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+									<input type="email" class="form-control form-control-user" id="exampleInputEmail"
+										placeholder="Alamat Email">
 								</div>
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user" id="no_induk" name="no_induk" placeholder="Nomor Induk">
+									<input type="text" class="form-control form-control-user" id="exampleInputEmail"
+										placeholder="Nomor Induk">
 								</div>
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="password" class="form-control form-control-user" id="password1" name="password1" placeholder="Password">
-										<?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
+										<input type="password" class="form-control form-control-user"
+											id="password1" name="password1" placeholder="Password">
 									</div>
 									<div class="col-sm-6">
-										<input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
+										<input type="password" class="form-control form-control-user"
+										id="password2" name="password2"  placeholder="Repeat Password">
 									</div>
 								</div>
-								<a href="<?= base_url('auth')?>" class="btn btn-primary btn-user btn-block">
+								<button type="submit" class="btn btn-primary btn-user btn-block">
 									Register Account
-								</a>
+</button>
 								<hr>
-								<a href="index.html" class="btn btn-google btn-user btn-block">
-									<i class="fab fa-google fa-fw"></i> Register with Google
-								</a>
 							</form>
 							<hr>
 							<div class="text-center">
 								<a class="small" href="forgot-password.html">Forgot Password?</a>
 							</div>
 							<div class="text-center">
-								<a class="small" href="login.html">Already have an account? Login!</a>
+								<a class="small" href="<?= base_url('auth');?>">Already have an account? Login!</a>
 							</div>
 						</div>
 					</div>
