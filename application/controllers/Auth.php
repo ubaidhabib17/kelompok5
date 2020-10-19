@@ -38,7 +38,13 @@ class Auth extends CI_Controller
 			if($user['is_active'] == 1){
 				// cek password
 				if(password_verify($password, $user['password'])){
-
+					$data = [
+						'email' => $user['email'],
+						'role_id' => $user['role_id']
+					];
+					// menyimpan data ke session
+					$this->session->set_userdata($data);
+					redirect('user'); //video selanjutnya
 				}else{
 					$this->session->set_flashdata('message', '<div class="alert 
 				alert-danger" role="alert">Wrong password!</div>');
@@ -75,7 +81,7 @@ class Auth extends CI_Controller
 				'lastname' => $this->input->post('lastname'),
 				'email' => htmlspecialchars($this->input->post('email', 'true')),
 				'no_induk' => $this->input->post('no_induk'),
-				'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 2,
 				'is_active' => 1,
 				'date_created' => time()
@@ -84,5 +90,13 @@ class Auth extends CI_Controller
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! Your account has been created. Please Login</div>');
 			redirect('auth');
 		}
+	}
+
+	public function logout(){
+		$this->session->unset_userdata('email');
+		$this->session->unset_userdata('role_id');
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');
+		redirect('auth');
+
 	}
 }
