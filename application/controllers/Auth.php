@@ -33,7 +33,28 @@ class Auth extends CI_Controller
 		$password = $this->input->post('password');
 		
 		$user = $this->db->get_where('user', ['email' => $email])->row_array();
-		var_dump($user);
+		if($user){
+			// usernya ada
+			if($user['is_active'] == 1){
+				// cek password
+				if(password_verify($password, $user['password'])){
+
+				}else{
+					$this->session->set_flashdata('message', '<div class="alert 
+				alert-danger" role="alert">Wrong password!</div>');
+				redirect('auth');
+				}
+			}else{
+				$this->session->set_flashdata('message', '<div class="alert 
+				alert-danger" role="alert">This email has not been activated!</div>');
+				redirect('auth');
+			}
+		}else{
+			$this->session->set_flashdata('message', '<div class="alert 
+			alert-danger" role="alert">Email not registered!</div>');
+			redirect('auth');
+		}
+		// var_dump($user);
 	}
 
 	public function registration()
