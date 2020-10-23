@@ -88,7 +88,7 @@
 		                    <div class="form-group">
 		                        <input type="text" class="form-control" id="icon" name="icon" placeholder="SubMenu icon">
 		                    </div>
-		                    <div class="form-group">
+		                    <div class="form-group ml-4">
 		                        <div class="form_check">
 		                            <input class="form-check-input" type="checkbox" value="1" name="is_active" id="is_active" checked>
 		                            <label class="form-check-label" for="is_active">
