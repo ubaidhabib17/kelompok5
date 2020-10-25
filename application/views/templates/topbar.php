@@ -51,7 +51,7 @@
 					<span
 						class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $user['nama_depan']; ?></span>
 					<img class="img-profile rounded-circle"
-						src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+						src="https://image.flaticon.com/icons/png/512/104/104784.png">
 				</a>
 				<!-- Dropdown - User Information -->
 				<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

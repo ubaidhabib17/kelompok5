@@ -7,14 +7,20 @@
 					<!-- Page Heading -->
 					<h1 class="h3 mb-4 text-gray-800"><?= $title ;?></h1>
 
+					<div class="row">
+						<div class="col-lg-6">
+							<?= $this->session->flashdata('message'); ?>
+						</div>
+					</div>
+
 					<div class="card mb-3" style="max-width: 540px;">
 						<div class="row no-gutters">
 							<div class="col-md-4">
-								<img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" class="card-img" alt="...">
+								<img src="https://image.flaticon.com/icons/png/512/104/104784.png" class="card-img" alt="...">
 							</div>
 							<div class="col-md-8">
 								<div class="card-body">
-									<h5 class="card-title"><?= $user['nama_depan']; ?></h5>
+									<h5 class="card-title"><?= $user['nama_depan']. " " .$user['nama_belakang']; ?></h5>
 									<p class="card-text"><?= $user['email']; ?></p>
 									<p class="card-text"><small class="text-muted">Member since  <?= date('d F Y', $user['date_created']);?></small></p>
 								</div>

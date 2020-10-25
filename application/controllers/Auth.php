@@ -13,6 +13,10 @@ class Auth extends CI_Controller
 
 	public function index()
 	{
+		if ($this->session->userdata('email')) {
+			redirect('user');
+		}
+		
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
 		$this->form_validation->set_rules('password', 'Password', 'required|trim');
 
@@ -69,7 +73,10 @@ class Auth extends CI_Controller
 
 	public function registration()
 	{
-		
+		if ($this->session->userdata('email')) {
+			redirect('user');
+		}
+
 		$this->form_validation->set_rules('nama_depan', 'Nama Depan', 'required|trim');
 		$this->form_validation->set_rules('nama_belakang', 'Nama Belakang', 'required|trim');
 		$this->form_validation->set_rules('no_induk', 'No Induk', 'required|trim|is_unique[user.no_induk]', ['is_unique' => 'This No Induk has already registered!']);
