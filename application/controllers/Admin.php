@@ -6,6 +6,9 @@
 		{
 			parent::__construct();
 			cek_login();
+			$this->load->library('form_validation');
+			$this->load->model('menu_model');
+			
 		}
 		public function index()
 		{
@@ -69,6 +72,35 @@
 			}
 
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Access Changed!</div>');
+
+		}
+
+		public function deleteRole($role_id){
+			$this->menu_model->delete_role($role_id);
+			// untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
+			$this->session->set_flashdata('flash-data', 'Role was deleted!');
+			redirect('admin/role','refresh');
+		}
+
+		public function editRole($role_id){
+			$data['title'] = 'Form Edit Data Role';
+			$data['user_role'] = $this->menu_model->getRolebyId($role_id);
+
+			$this->form_validation->set_rules('id', 'ROLE ID', 'required');
+			$this->form_validation->set_rules('role', 'ROLE NAME', 'required');
+
+			if($this->form_validation->run() == FALSE){
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('admin/edit_role', $data);
+				$this->load->view('templates/footer');
+			}else{
+				$this->menu_model->edi_role($role_id);
+				$this->session->set_flashdata('flash-data','Role was edited!');
+            	redirect('admin/role','refresh');
+			}
+			
 
 		}
     }
