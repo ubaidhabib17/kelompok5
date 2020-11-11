@@ -35,6 +35,8 @@
 			$this->load->view('templates/topbar', $data);
 			$this->load->view('admin/role', $data);
 			$this->load->view('templates/footer');
+
+			
 		}
 		
 		public function roleAccess($role_id)
@@ -96,7 +98,7 @@
 				$this->load->view('admin/edit_role', $data);
 				$this->load->view('templates/footer');
 			}else{
-				$this->menu_model->edi_role($role_id);
+				$this->menu_model->edit_role($role_id);
 				$this->session->set_flashdata('flash-data','Role was edited!');
             	redirect('admin/role','refresh');
 			}
