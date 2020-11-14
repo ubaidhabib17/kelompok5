@@ -27,6 +27,17 @@
 										<?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
 								</div>
 								<div class="form-group">
+									<select name="pertanyaan" id="pertanyaaan" class="form-control" name="pertanyaan">
+										<option value="">1</option>
+									</select>
+										<?= form_error('pertanyaan', '<small class="text-danger pl-3">', '</small>'); ?>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control form-control-user" id="jawaban" name="jawaban"
+										placeholder="Jawaban" value="<?= set_value('jawaban');?>">
+										<?= form_error('no_induk', '<small class="text-danger pl-3">', '</small>'); ?>
+								</div>
+								<div class="form-group">
 									<input type="text" class="form-control form-control-user" id="no_induk" name="no_induk"
 										placeholder="Nomor Induk" value="<?= set_value('no_induk');?>">
 										<?= form_error('no_induk', '<small class="text-danger pl-3">', '</small>'); ?>
