@@ -27,8 +27,10 @@
 										<?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
 								</div>
 								<div class="form-group">
-									<select name="pertanyaan" id="pertanyaaan" class="form-control" name="pertanyaan">
-										<option value="">1</option>
+									<select name="pertanyaan" id="pertanyaaan" class="form-control" >
+										<option value="">Siapa nama ibu kandung anda ? </option>
+										<option value="">Nama hewan peliharaan anda ? </option>
+										<option value="">Warna yang anda sukai ? </option>
 									</select>
 										<?= form_error('pertanyaan', '<small class="text-danger pl-3">', '</small>'); ?>
 								</div>
@@ -53,6 +55,12 @@
 										id="password2" name="password2"  placeholder="Repeat Password">
 									</div>
 								</div>
+								<?php
+									if (isset($_POST['submit'])) {
+									$selected = $_POST['pertanyaan'];
+									echo "<h4>$selected</h4>";
+									}
+								?>
 								<button type="submit" class="btn btn-primary btn-user btn-block">
 									Register Account
 								</button>

@@ -80,6 +80,8 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('nama_depan', 'Nama Depan', 'required|trim');
 		$this->form_validation->set_rules('nama_belakang', 'Nama Belakang', 'required|trim');
 		$this->form_validation->set_rules('no_induk', 'No Induk', 'required|trim|is_unique[user.no_induk]', ['is_unique' => 'This No Induk has already registered!']);
+		$this->form_validation->set_rules('pertanyaan', 'Pertanyaan', 'required|trim');
+		$this->form_validation->set_rules('jawaban', 'Jawaban', 'required|trim');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', ['is_unique' => 'This email has already registered!']);
 		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[5]|matches[password2]', ['matches' => 'password dont match!', 'min_length' => 'password too short!']);
 		$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
@@ -95,12 +97,14 @@ class Auth extends CI_Controller
 				'nama_belakang' => $this->input->post('nama_belakang'),
 				'email' => htmlspecialchars($email),
 				'no_induk' => $this->input->post('no_induk'),
+				'pertanyaan' => $this->input->post('pertanyaan'),
+				'jawaban' => $this->input->post('jawaban'),
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 2,
 				'is_active' => 0,
 				'date_created' => time()
 			];
-
+			
 			// token berupa bilangan random
 			// base64_encode digunakan untuk menerjemahkan token agar bisa dimasukkan ke db
 			$token = base64_encode(random_bytes(32));
