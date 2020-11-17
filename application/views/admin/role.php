@@ -31,7 +31,7 @@
 										<a href="<?= base_url('admin/roleaccess/').$r['id']?>" class="badge badge-warning">access</a>
 										<a href="<?= base_url('admin/editRole/').$r['id']?>" class="badge badge-success">edit</a>
 										<a href="<?= base_url('admin/deleteRole/').$r['id'];?>" class="badge badge-danger"
-										onclick="return confirm('Are younsure to delete this data ?');">delete</a>
+										onclick="return confirm('Are you sure to delete this data ?');">delete</a>
 									</td>
 								</tr>
 								<?php $i++; ?>
