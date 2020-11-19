@@ -36,7 +36,6 @@ class Auth extends CI_Controller
 	{
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
-
 		$user = $this->db->get_where('user', ['email' => $email])->row_array();
 		if ($user) {
 			// usernya ada
@@ -100,7 +99,7 @@ class Auth extends CI_Controller
 				'email' => htmlspecialchars($email),
 				'no_induk' => $this->input->post('no_induk'),
 				'pertanyaan' => $this->input->post('pertanyaan'),
-				'jawaban' => $this->input->post('jawaban'),
+				'jawaban' => strtolower($this->input->post('jawaban')),
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 2,
 				'is_active' => 0,
@@ -115,7 +114,8 @@ class Auth extends CI_Controller
 				'token' 		=> $token,
 				'date_created'	=> time()
 			];
-
+			// var_dump($_POST);
+			// die();
 			$this->db->insert('user',  $data);
 			$this->db->insert('user_token',  $user_token);
 

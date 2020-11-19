@@ -95,18 +95,39 @@
 
 		public function presensi(){
 			$data['title']= "Presensi Siswa";
+			$data['pertanyaan'] = $this->db->get('pertanyaan')->result_array();
 			$data['user'] = $this->db->get_where('user', ['email' => 
 			$this->session->userdata('email')])->row_array();
-
-			$this->form_validation->set_rules('nama_depan', 'Nama Depan', 'required|trim');
+			$this->form_validation->set_rules('pertanyaan', 'pertanyaan', 'required|trim');
+			$this->form_validation->set_rules('jawaban', 'jawaban', 'required|trim');
+			$this->form_validation->set_rules('email', 'email', 'required|trim');
+			$this->form_validation->set_rules('status', 'status', 'required');
 			
 			if ($this->form_validation->run() == false) {
 				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/sidebar');
 				$this->load->view('templates/topbar', $data);
-				$this->load->view('user/presensi');
+				$this->load->view('user/presensi', $data);
 				$this->load->view('templates/footer');
+			}else {
+				$data = [
+					'status' => $this->input->post('status')
+				];
+			$this->db->insert('presensi', $data);
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Absen Telah Ditambahkan!</div');
+			redirect('user/presensi');
 			}
+		}
+
+		public function _cekDataPresensi(){
+			$email = $this->input->post('email');
+			$pertanyaan = $this->input->post('pertanyaan');
+			$jawaban = strtolower($this->input->post('jawaban'));
+
+			$user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+			
+
 		}
 	}
 ?>
