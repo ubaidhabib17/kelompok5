@@ -6,6 +6,7 @@
 
 			<div class="row">
 				<div class="col-lg-8">
+				<?= $this->session->flashdata('message'); ?>
 					<form action="<?= base_url('user/presensi')?>" method="POST">
 						<div class="form-group row">
 							<label for="email" class="col-sm-2 col-form-label">Pertanyaan</label>
@@ -23,7 +24,7 @@
 						<div class="form-group row">
 							<label for="jawaban" class="col-sm-2 col-form-label">Jawaban</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="jawaban" name="jawaban">
+								<input type="text" class="form-control" id="jawaban" name="jawaban" autocomplete="off">
 								<?= form_error('jawaban', '<small class="text-danger pl-3">', '</small>'); ?>
 
 								<input type="hidden" class="form-control form-control-user" id="email" name="email"
