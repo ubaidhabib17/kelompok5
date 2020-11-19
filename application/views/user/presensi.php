@@ -30,6 +30,10 @@
 									value="<?= $user['email'];?>">
 								<?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
 
+								<input type="hidden" class="form-control form-control-user" id="id_user" name="id_user"
+									value="<?= $user['id'];?>">
+								<?= form_error('id_user', '<small class="text-danger pl-3">', '</small>'); ?>
+
 							</div>
 						</div>
 						<div class="form-group row">

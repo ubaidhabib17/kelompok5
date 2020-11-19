@@ -98,9 +98,12 @@
 			$data['pertanyaan'] = $this->db->get('pertanyaan')->result_array();
 			$data['user'] = $this->db->get_where('user', ['email' => 
 			$this->session->userdata('email')])->row_array();
+
 			$this->form_validation->set_rules('pertanyaan', 'pertanyaan', 'required|trim');
 			$this->form_validation->set_rules('jawaban', 'jawaban', 'required|trim');
 			$this->form_validation->set_rules('email', 'email', 'required|trim');
+			$this->form_validation->set_rules('id_user', 'id_user', 'required|trim');
+			$this->form_validation->set_rules('tanggal', 'tanggal', 'required|trim');
 			$this->form_validation->set_rules('status', 'status', 'required');
 			
 			if ($this->form_validation->run() == false) {
@@ -111,11 +114,16 @@
 				$this->load->view('templates/footer');
 			}else {
 				$data = [
-					'status' => $this->input->post('status')
+					'status' => $this->input->post('status'),
+					'id_user' => $this->input->post('id_user'),
+					'tanggal' => date('Y-m-d')
 				];
+				// var_dump($_POST);
+				// die();
 			$this->db->insert('presensi', $data);
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Absen Telah Ditambahkan!</div');
 			redirect('user/presensi');
+			
 			}
 		}
 
