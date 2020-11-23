@@ -112,13 +112,20 @@
 				$this->load->view('user/presensi', $data);
 				$this->load->view('templates/footer');
 			}else {
-				$data = [
-					'status' => $this->input->post('status'),
-					'id_user' => $this->input->post('id_user')
-				];
-			$this->db->insert('presensi', $data);
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Absen Telah Ditambahkan!</div');
-			redirect('user/presensi');
+				$pertanyaan = $_POST['pertanyaan'];
+				$jawaban= $_POST['jawaban'];
+				if($jawaban == $this->session->userdata('jawaban') && $pertanyaan == $this->session->userdata('pertanyaan')){
+					$data = [
+						'status' => $this->input->post('status'),
+						'id_user' => $this->input->post('id_user'),
+						'tanggal' => date('Y-m-d h:i:sa')
+					];
+				$this->db->insert('presensi', $data);
+				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Absen Telah Ditambahkan!</div');
+				redirect('user/presensi');
+				}
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertanyaan atau jawaban anda salah!</div');
+				redirect('user/presensi');
 			
 			}
 		}

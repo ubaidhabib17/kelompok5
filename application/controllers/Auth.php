@@ -43,9 +43,11 @@ class Auth extends CI_Controller
 				// cek password
 				if (password_verify($password, $user['password'])) {
 					$data = [
-						'email' => $user['email'],
-						'role_id' => $user['role_id'],
-						'id' => $user['id']
+						'email' 		=> $user['email'],
+						'role_id' 		=> $user['role_id'],
+						'id' 			=> $user['id'],
+						'pertanyaan' 	=> $user['pertanyaan'],
+						'jawaban'		=> $user['jawaban']
 					];
 					// menyimpan data ke session
 					$this->session->set_userdata($data);
@@ -104,7 +106,7 @@ class Auth extends CI_Controller
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 2,
 				'is_active' => 0,
-				'date_created' => time()
+				'date_created' => date('Y-m-d h:i:sa')
 			];
 			
 			// token berupa bilangan random
