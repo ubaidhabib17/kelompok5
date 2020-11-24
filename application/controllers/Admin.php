@@ -105,5 +105,31 @@
 			
 
 		}
+
+		public function editPresensi($presen_id){
+			$data['title'] = 'Form Edit Data Role';
+			$data['user_presensi'] = $this->menu_model->getRolebyId($presen_id);
+
+			$this->form_validation->set_rules('id_presen', 'ID PRESEN', 'required');
+			$this->form_validation->set_rules('status', 'Status', 'required');
+
+			if($this->form_validation->run() == FALSE){
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('templates/topbar', $data);
+				$this->load->view('admin/edit_presensi', $data);
+				$this->load->view('templates/footer');
+			}else{
+				$this->menu_model->edit_role($presen_id);
+				$this->session->set_flashdata('flash-data','Presensi was edited!');
+            	redirect('admin/presensi','refresh');
+			}
+		}
+
+		public function deletePresensi($presen_id){
+			$this->menu_model->delete_presensi($presen_id);
+			// untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
+			$this->session->set_flashdata('flash-data', 'Presensi was deleted!');
+			redirect('admin/presensi','refresh');
+		}
     }
-?>
