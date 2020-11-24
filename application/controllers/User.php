@@ -106,11 +106,20 @@
 			$this->form_validation->set_rules('status', 'status', 'required');
 			
 			if ($this->form_validation->run() == false) {
-				$this->load->view('templates/header', $data);
-				$this->load->view('templates/sidebar');
-				$this->load->view('templates/topbar', $data);
-				$this->load->view('user/presensi', $data);
-				$this->load->view('templates/footer');
+				if($this->session->userdata('role_id') == 1){
+					$this->load->view('templates/header', $data);
+					$this->load->view('templates/sidebar');
+					$this->load->view('templates/topbar', $data);
+					$this->load->view('admin/presensi', $data);
+					$this->load->view('templates/footer');
+				}else{
+					$this->load->view('templates/header', $data);
+					$this->load->view('templates/sidebar');
+					$this->load->view('templates/topbar', $data);
+					$this->load->view('user/presensi', $data);
+					$this->load->view('templates/footer');
+				}
+				
 			}else {
 				$pertanyaan = $_POST['pertanyaan'];
 				$jawaban= $_POST['jawaban'];

@@ -102,8 +102,22 @@
 				$this->session->set_flashdata('flash-data','Role was edited!');
             	redirect('admin/role','refresh');
 			}
-			
+		}
 
+		public function get_presensi(){
+			$data['title'] = 'Presensi Siswa';
+			// $data['admin'] = $this->db->get('presensi')->result_array();
+			
+			$this->db->select('b.nama_depan, b.nama_belakang, a.tanggal, a.status');
+			$this->db->from('presensi AS a');
+			$this->db->join('user AS b', 'b.id_user = a.id');
+			$query = $this->db->get();
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('admin/presensi', $data);
+			$this->load->view('templates/footer');
 		}
     }
 ?>
