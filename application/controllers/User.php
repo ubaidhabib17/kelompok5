@@ -6,6 +6,7 @@
 		{
 			parent::__construct();
 			cek_login();
+			$this->load->model('Presensi_model');
 		}
 		
 		public function index()
@@ -96,9 +97,14 @@
 		public function presensi(){
 			$data['title']= "Presensi Siswa";
 			$data['pertanyaan'] = $this->db->get('pertanyaan')->result_array();
+			
 			$data['user'] = $this->db->get_where('user', ['email' => 
 			$this->session->userdata('email')])->row_array();
+			$this->load->model('Presensi_model', 'presensi');
+        
+        	$data['presensi'] = $this->presensi->get_presensi();
 
+			
 			$this->form_validation->set_rules('pertanyaan', 'pertanyaan', 'required|trim');
 			$this->form_validation->set_rules('jawaban', 'jawaban', 'required|trim');
 			$this->form_validation->set_rules('email', 'email', 'required|trim');

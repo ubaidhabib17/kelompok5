@@ -10,7 +10,10 @@ class Presensi_model extends CI_MODEL {
     
     function get_presensi()
 	{
-		$query = $this->db->get('presensi');
+		$query = "SELECT `presensi`.*, `user`.*
+        FROM `user` JOIN `presensi`
+        ON `user`.`id` = `presensi`.`id_user`
+        ";
 		return $this->db->query($query)->result_array();
     }
     
