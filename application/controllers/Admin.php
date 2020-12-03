@@ -143,9 +143,9 @@
 		}
 
 		public function deletePresensi($presen_id){
-			$this->menu_model->delete_presensi($presen_id);
+			$this->presensi_model->delete_presensi($presen_id);
 			// untuk flashdata mempunyai 2 parameter (nama flashdata/alias, isi dari flashdatanya)
 			$this->session->set_flashdata('flash-data', 'Presensi was deleted!');
-			redirect('admin/presensi','refresh');
+			redirect('admin/get_presensi','refresh');
 		}
     }

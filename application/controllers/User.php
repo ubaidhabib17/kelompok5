@@ -130,7 +130,7 @@
 				$pertanyaan = $_POST['pertanyaan'];
 				$jawaban= $_POST['jawaban'];
 				$jamBatas = strtotime('07:00:00');
-				if($jawaban == $this->session->userdata('jawaban') && $pertanyaan == $this->session->userdata('pertanyaan') && $jamBatas > strtotime(date('H:i:s'))){
+				if($jawaban == $this->session->userdata('jawaban') && $pertanyaan == $this->session->userdata('pertanyaan') && strtotime(date('H:i:s')) <= $jamBatas ){
 					$data = [
 						'status' => $this->input->post('status'),
 						'id_user' => $this->input->post('id_user'),
@@ -138,10 +138,23 @@
 					];
 				$this->db->insert('presensi', $data);
 				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Absen Telah Ditambahkan!</div');
-				redirect('User/presensi', 'refresh');
+				redirect('user/presensi', 'refresh');
+				}elseif ($jawaban != $this->session->userdata('jawaban') && $pertanyaan != $this->session->userdata('pertanyaan')) {
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Pertanyaan dan jawaban anda salah!</div');
+					redirect('user/presensi', 'refresh');
+				}elseif ($pertanyaan != $this->session->userdata('pertanyaan')) {
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertanyaan anda salah!</div');
+					redirect('user/presensi', 'refresh');
+				}elseif ($jawaban != $this->session->userdata('jawaban')) {
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Jawaban anda salah!</div');
+					redirect('user/presensi', 'refresh');
 				}
-				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertanyaan atau jawaban anda salah!</div');
-				redirect('User/presensi', 'refresh');
+				elseif (strtotime(date('H:i:s')) > $jamBatas ) {
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda telat absen !</div');
+					redirect('user/presensi', 'refresh');
+				}
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Error!</div');
+				redirect('user/presensi', 'refresh');
 			
 			}
 		}

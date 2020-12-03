@@ -72,8 +72,12 @@
 									placeholder="Submenu url">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" value="<?= $p['status'] ?>" id="status" name="status"
-									placeholder="Submenu icon">
+								<select class="form-control" id="status" name="status">
+									<option value="" disabled selected>Pilih Kehadiran </option>
+									<option value="Hadir">Hadir</option>
+									<option value="Izin">Izin</option>
+									<option value="Alfa">Alfa</option>
+								</select>
 							</div>
 						</div>
 						<div class="modal-footer">

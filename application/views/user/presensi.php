@@ -3,7 +3,6 @@
 
 			<!-- Page Heading -->
 			<h1 class="h3 mb-4 text-gray-800"><?= $title ;?></h1>
-
 			<div class="row">
 				<div class="col-lg-8">
 				<?= $this->session->flashdata('message'); ?>
@@ -49,6 +48,7 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-10">
+							<p class="lead">NB : Wajib direload setelah submit gagal !</p>
 								<button type="submit" class="btn btn-primary">Submit</button>
 								<button type="submit" onclick="document.location.reload(true)" class="btn btn-warning">Reload</button>
 							</div>
