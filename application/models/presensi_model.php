@@ -6,6 +6,10 @@ class Presensi_model extends CI_MODEL {
     public function __construct()
 	{
 		parent::__construct();
+	}
+	
+	public function getRolebyId($id){
+        return $this->db->get_where('presensi', ['id_presen' => $id])->row_array();
     }
     
     function get_presensi()
@@ -22,7 +26,7 @@ class Presensi_model extends CI_MODEL {
         $this->db->delete('presensi');
     }
 
-    public function edit_presensi($presensi_id){
+    public function edit_presensi($id_presen){
         $data=[
             "id_presen" => $this->input->post('id_presen', true),
             "status" => $this->input->post('status', true)

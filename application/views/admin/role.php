@@ -6,7 +6,7 @@
 
 
 			<div class="col-lg-6">
-				<?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+				<?= form_error('role', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
 				<?= $this->session->flashdata('message'); ?>
 			
@@ -29,7 +29,7 @@
 									<td><?= $r['role']; ?></td>
 									<td>
 										<a href="<?= base_url('admin/roleaccess/').$r['id']?>" class="badge badge-warning">access</a>
-										<a href="<?= base_url('admin/editRole/').$r['id']?>" class="badge badge-success">edit</a>
+										<a href="" data-toggle="modal" data-target="#editMenuModal<?= $r['id'] ?>" class="badge badge-success">edit</a>
 										<a href="<?= base_url('admin/deleteRole/').$r['id'];?>" class="badge badge-danger"
 										onclick="return confirm('Are you sure to delete this data ?');">delete</a>
 									</td>
@@ -73,3 +73,33 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- edit Modal -->
+		<?php foreach ($role as $r):?>
+		<div class="modal fade" id="editMenuModal<?= $r['id']?>" tabindex="-1" role="dialog"
+			aria-labelledby="editMenuModal<?= $r['id']?>" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="editMenuModal">Edit Role</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<form action="<?= base_url('admin/editRole/'.$r['id']); ?>" method="post">
+						<div class="modal-body">
+							<div class="form-group">
+								<input type="text" class="form-control" value="<?= $r['role'] ?>" id="role" name="role"
+									placeholder="Role name">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+							<button type="submit" class="btn btn-primary">Simpan</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<?php endforeach;?>
+		<!-- End edit Modal -->

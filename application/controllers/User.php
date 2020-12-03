@@ -144,16 +144,5 @@
 			
 			}
 		}
-
-		public function _cekDataPresensi(){
-			$email = $this->input->post('email');
-			$pertanyaan = $this->input->post('pertanyaan');
-			$jawaban = strtolower($this->input->post('jawaban'));
-
-			$user = $this->db->get_where('user', ['email' => $email])->row_array();
-
-			
-
-		}
 	}
 ?>
