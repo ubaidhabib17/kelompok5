@@ -50,6 +50,7 @@
 						<div class="form-group row">
 							<div class="col-sm-10">
 								<button type="submit" class="btn btn-primary">Submit</button>
+								<button type="submit" onclick="document.location.reload(true)" class="btn btn-warning">Reload</button>
 							</div>
 						</div>
 					</form>

@@ -129,7 +129,8 @@
 			}else {
 				$pertanyaan = $_POST['pertanyaan'];
 				$jawaban= $_POST['jawaban'];
-				if($jawaban == $this->session->userdata('jawaban') && $pertanyaan == $this->session->userdata('pertanyaan')){
+				$jamBatas = strtotime('07:00:00');
+				if($jawaban == $this->session->userdata('jawaban') && $pertanyaan == $this->session->userdata('pertanyaan') && $jamBatas > strtotime(date('H:i:s'))){
 					$data = [
 						'status' => $this->input->post('status'),
 						'id_user' => $this->input->post('id_user'),
@@ -137,10 +138,10 @@
 					];
 				$this->db->insert('presensi', $data);
 				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Absen Telah Ditambahkan!</div');
-				redirect('user/presensi');
+				redirect('User/presensi', 'refresh');
 				}
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertanyaan atau jawaban anda salah!</div');
-				redirect('user/presensi');
+				redirect('User/presensi', 'refresh');
 			
 			}
 		}
