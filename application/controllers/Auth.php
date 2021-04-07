@@ -108,7 +108,7 @@ class Auth extends CI_Controller
 				'is_active' => 0,
 				'date_created' => date('Y-m-d h:i:sa')
 			];
-			
+
 			// token berupa bilangan random
 			// base64_encode digunakan untuk menerjemahkan token agar bisa dimasukkan ke db
 			$token = base64_encode(random_bytes(32));
